@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login User Air Artetis</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="login-page">
+    <main class="login-layout">
+      <section class="login-hero" aria-label="Informasi user">
+        <div class="brand login-brand">
+          <div class="brand-mark"><img src="logo-gpma.png" alt="Logo GPMA5" /></div>
+          <div>
+            <p class="eyebrow">RT 14 RW 1</p>
+            <h1>Air Artetis</h1>
+          </div>
+        </div>
+        <div class="login-copy">
+          <p class="eyebrow">User Area</p>
+          <h2>Masuk untuk melihat data air rumah dan upload foto meteran.</h2>
+          <p>Akun user dibuat oleh admin agar setiap warga hanya melihat data rumahnya masing-masing.</p>
+        </div>
+      </section>
+
+      <section class="login-card" aria-label="Form login user">
+        <div>
+          <p class="eyebrow">Login User</p>
+          <h2>Masuk Halaman User</h2>
+        </div>
+        <form id="user-login-form" class="stack-form">
+          <label for="user-username">Username</label>
+          <input id="user-username" name="username" autocomplete="username" placeholder="Masukkan username" required />
+
+          <label for="user-password">Password</label>
+          <input id="user-password" name="password" type="password" autocomplete="current-password" placeholder="Masukkan password" required />
+
+          <button class="primary-button" type="submit">Login User</button>
+          <a class="back-link" href="index.html">Kembali ke Halaman Utama</a>
+        </form>
+        <p id="user-login-message" class="login-message" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="user-login.js"></script>
+  </body>
+</html>

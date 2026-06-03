@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin Air Artetis</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="login-page">
+    <main class="login-layout">
+      <section class="login-hero" aria-label="Informasi dashboard">
+        <div class="brand login-brand">
+          <div class="brand-mark"><img src="logo-gpma.png" alt="Logo GPMA5" /></div>
+          <div>
+            <p class="eyebrow">RT 14 RW 1</p>
+            <h1>Air Artetis</h1>
+          </div>
+        </div>
+        <div class="login-copy">
+          <p class="eyebrow">Admin Area</p>
+          <h2>Masuk untuk mengelola laporan air Griya Putra Mangunjiwan Asri 5.</h2>
+          <p>Halaman warga tetap terbuka untuk cek kode rumah, sementara pengaturan harga, data user, dan laporan bulanan berada di area admin.</p>
+        </div>
+      </section>
+
+      <section class="login-card" aria-label="Form login admin">
+        <div>
+          <p class="eyebrow">Login Admin</p>
+          <h2>Masuk Dashboard</h2>
+        </div>
+        <form id="admin-login-form" class="stack-form">
+          <label for="admin-username">User</label>
+          <input id="admin-username" name="username" autocomplete="username" placeholder="Masukkan user admin" required />
+
+          <label for="admin-password">Password</label>
+          <input id="admin-password" name="password" type="password" autocomplete="current-password" placeholder="Masukkan password admin" required />
+
+          <button class="primary-button" type="submit">Login Admin</button>
+          <a class="back-link" href="index.html">Kembali ke Halaman Utama</a>
+        </form>
+        <p id="login-message" class="login-message" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="login.js"></script>
+  </body>
+</html>

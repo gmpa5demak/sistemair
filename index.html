@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Air Artetis Griya Putra Mangunjiwan Asri 5</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark"><img src="logo-gpma.png" alt="Logo GPMA5" /></div>
+          <div>
+            <p class="eyebrow">RT 14 RW 1</p>
+            <h1>Air Artetis</h1>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Navigasi utama">
+          <button class="nav-button active" data-view="home">Halaman Utama</button>
+          <button class="nav-button" data-view="user">Halaman User</button>
+          <button class="nav-button" data-view="admin">Halaman Admin</button>
+        </nav>
+        <div class="address-card">
+          <p>Griya Putra Mangunjiwan Asri 5</p>
+          <span>Mangunjiwan, Demak</span>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Pengelolaan Air Perumahan</p>
+            <h2>Dashboard pemakaian dan tagihan air bulanan</h2>
+          </div>
+          <div class="price-pill">
+            <span>Harga air</span>
+            <strong id="current-price">Rp 2.500 / m3</strong>
+          </div>
+        </header>
+
+        <section class="hero">
+          <div class="hero-copy">
+            <span class="status-dot"></span>
+            <p>Sistem monitoring warga untuk cek pemakaian air, upload foto meteran, dan rekap laporan admin.</p>
+          </div>
+        </section>
+
+        <section id="home" class="view active">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Pendapatan</p>
+              <h3>Laporan pendapatan bulanan air</h3>
+            </div>
+            <input id="income-month" type="month" aria-label="Pilih bulan pendapatan" />
+          </div>
+          <div class="income-grid">
+            <article class="metric">
+              <span>Total Pendapatan</span>
+              <strong id="income-total">Rp 0</strong>
+            </article>
+            <article class="metric">
+              <span>Total Pemakaian</span>
+              <strong id="income-usage">0 m3</strong>
+            </article>
+            <article class="metric">
+              <span>Jumlah User</span>
+              <strong id="income-users">0</strong>
+            </article>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Cek cepat</p>
+              <h3>Cari tagihan berdasarkan nama</h3>
+            </div>
+          </div>
+          <div class="search-panel">
+            <label for="home-search">Nama</label>
+            <div class="search-row">
+              <input id="home-search" type="search" placeholder="Contoh: Budi Santoso" autocomplete="off" />
+              <button id="home-search-button" class="primary-button">Cari</button>
+            </div>
+            <p class="helper">Gunakan nama warga untuk melihat pemakaian bulan lalu, bulan saat ini, dan jumlah bayar.</p>
+          </div>
+          <div id="home-result" class="result-card empty">
+            Masukkan nama warga untuk menampilkan data tagihan.
+          </div>
+        </section>
+
+        <section id="user" class="view">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Data warga</p>
+              <h3>Halaman User</h3>
+            </div>
+            <div class="toolbar-actions">
+              <select id="user-selector" aria-label="Pilih user"></select>
+              <button id="user-logout" class="secondary-button" type="button">Keluar User</button>
+            </div>
+          </div>
+          <div class="user-grid">
+            <article class="profile-panel">
+              <p class="eyebrow">Profil</p>
+              <div id="user-profile-photo" class="profile-photo">Foto</div>
+              <h3 id="user-name">-</h3>
+              <dl>
+                <div>
+                  <dt>Kode Rumah</dt>
+                  <dd id="user-code">-</dd>
+                </div>
+                <div>
+                  <dt>Blok Rumah</dt>
+                  <dd id="user-block">-</dd>
+                </div>
+              </dl>
+              <form id="user-profile-form" class="stack-form profile-form">
+                <input name="name" placeholder="Nama" required />
+                <input name="block" placeholder="Blok rumah" required />
+                <input name="username" placeholder="Username" required />
+                <input name="password" type="password" placeholder="Password baru" />
+                <input name="profilePhoto" type="file" accept="image/*" />
+                <button class="secondary-button" type="submit">Simpan Profil</button>
+              </form>
+            </article>
+            <article class="meter-panel">
+              <div class="metric">
+                <span>Air habis bulan lalu</span>
+                <strong id="user-last">0 m3</strong>
+              </div>
+              <div class="metric">
+                <span>Air habis bulan saat ini</span>
+                <strong id="user-current">0 m3</strong>
+              </div>
+              <div class="metric total">
+                <span>Jumlah yang harus dibayarkan</span>
+                <strong id="user-total">Rp 0</strong>
+              </div>
+            </article>
+            <article class="upload-panel">
+              <p class="eyebrow">Input mandiri</p>
+              <h3>Input meteran bulan ini</h3>
+              <form id="user-meter-form" class="stack-form">
+                <input id="user-meter-current" name="currentUsage" type="number" min="0" step="0.1" placeholder="Meteran bulan ini" required />
+                <input id="user-meter-month" name="month" type="month" required />
+                <input id="user-photo" name="userPhoto" type="file" accept="image/*" />
+                <button class="primary-button" type="submit">Simpan Meteran</button>
+              </form>
+              <p id="user-previous-meter-note" class="helper">Meteran bulan lalu otomatis dari data terakhir.</p>
+              <div id="user-photo-preview" class="photo-preview">Belum ada foto.</div>
+            </article>
+          </div>
+        </section>
+
+        <section id="admin" class="view">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Pengelola</p>
+              <h3>Halaman Admin</h3>
+            </div>
+            <button id="admin-logout" class="secondary-button" type="button">Keluar Admin</button>
+          </div>
+
+          <div class="admin-grid">
+            <article class="admin-panel">
+              <h4>Pengaturan harga air</h4>
+              <label for="price-input">Harga per m3</label>
+              <div class="inline-form">
+                <input id="price-input" type="number" min="0" step="100" />
+                <button id="save-price" class="primary-button">Simpan</button>
+              </div>
+            </article>
+
+            <article class="admin-panel">
+              <h4>Buat akun user</h4>
+              <form id="create-user-form" class="stack-form">
+                <input name="name" placeholder="Nama user" required />
+                <input name="code" placeholder="Kode rumah, contoh C-01" required />
+                <input name="block" placeholder="Blok rumah" required />
+                <input name="username" placeholder="Username login user" required />
+                <input name="password" type="password" placeholder="Password login user" required />
+                <button class="primary-button" type="submit">Tambah User</button>
+              </form>
+            </article>
+
+            <article class="admin-panel wide">
+              <h4>Input pemakaian dan biaya bulanan</h4>
+              <form id="usage-form" class="usage-form">
+                <input name="userSearch" type="search" placeholder="Cari nama / kode rumah / blok" autocomplete="off" />
+                <select name="userId" required></select>
+                <input name="currentUsage" type="number" min="0" step="0.1" placeholder="Meteran bulan ini" required />
+                <input name="monthlyCost" type="number" min="0" step="500" placeholder="Biaya bulan ini (opsional)" />
+                <input name="month" type="month" required />
+                <input name="adminPhoto" type="file" accept="image/*" />
+                <button class="primary-button" type="submit">Simpan Data</button>
+              </form>
+              <p id="previous-meter-note" class="helper">Meteran bulan lalu akan ditarik otomatis dari data terakhir.</p>
+            </article>
+
+            <article class="admin-panel wide">
+              <h4>Edit / hapus data user</h4>
+              <form id="admin-edit-user-form" class="admin-edit-form">
+                <select name="userId" required></select>
+                <input name="name" placeholder="Nama user" required />
+                <input name="code" placeholder="Kode rumah" required />
+                <input name="block" placeholder="Blok rumah" required />
+                <input name="username" placeholder="Username" required />
+                <input name="password" type="password" placeholder="Password baru (opsional)" />
+                <input name="profilePhoto" type="file" accept="image/*" />
+                <button class="primary-button" type="submit">Simpan Edit</button>
+                <button id="delete-user" class="danger-button" type="button">Hapus User</button>
+              </form>
+            </article>
+          </div>
+
+          <div class="report-layout">
+            <article class="table-panel">
+              <div class="table-title">
+                <h4>Laporan Bulanan</h4>
+                <div class="toolbar-actions">
+                  <input id="report-search" type="search" placeholder="Cari laporan..." autocomplete="off" />
+                  <input id="export-month" type="month" aria-label="Pilih bulan export" />
+                  <button id="export-excel" class="secondary-button" type="button">Export Excel</button>
+                  <span id="report-summary">0 user</span>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nama</th>
+                      <th>Kode</th>
+                      <th>Bulan</th>
+                      <th>Lalu</th>
+                      <th>Saat Ini</th>
+                      <th>Bayar</th>
+                      <th>Foto Meteran</th>
+                    </tr>
+                  </thead>
+                  <tbody id="report-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="table-panel">
+              <div class="table-title">
+                <h4>Nama-Nama User</h4>
+                <span id="user-count">0 warga</span>
+              </div>
+              <div id="user-list" class="user-list"></div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="photo-modal" class="photo-modal" aria-hidden="true">
+      <div class="photo-modal-card" role="dialog" aria-modal="true" aria-label="Preview foto meteran">
+        <div class="photo-modal-header">
+          <strong id="photo-modal-title">Foto meteran</strong>
+          <button id="close-photo-modal" class="secondary-button" type="button">Tutup</button>
+        </div>
+        <img id="photo-modal-image" src="" alt="Preview foto meteran" />
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
