@@ -259,13 +259,15 @@ function getMeterPhoto(user) {
 function renderReports() {
   const body = byId("report-body");
   const query = byId("report-search")?.value.trim().toLowerCase() || "";
-  const filteredUsers = state.users.filter((user) => {
-    if (!query) return true;
+  const filteredUsers = state.users
+    .filter((user) => {
+      if (!query) return true;
 
-    return [user.name, user.code, user.block, user.month]
-      .filter(Boolean)
-      .some((value) => String(value).toLowerCase().includes(query));
-  });
+      return [user.name, user.code, user.block, user.month]
+        .filter(Boolean)
+        .some((value) => String(value).toLowerCase().includes(query));
+    })
+    .sort((a, b) => String(a.code).localeCompare(String(b.code), "id-ID", { numeric: true }));
 
   body.innerHTML = filteredUsers
     .map(
@@ -405,7 +407,7 @@ function renderHomeResult(user) {
   const result = byId("home-result");
   if (!user) {
     result.className = "result-card empty";
-    result.textContent = "Nama warga tidak ditemukan. Coba ketik sebagian atau seluruh nama.";
+    result.textContent = "Data tidak ditemukan. Coba ketik nama warga atau kode rumah.";
     return;
   }
 
@@ -623,7 +625,7 @@ byId("home-result").addEventListener("click", (event) => {
 
 byId("home-search-button").addEventListener("click", () => {
   const query = byId("home-search").value.trim().toLowerCase();
-  const user = state.users.find((item) => item.name.toLowerCase().includes(query));
+  const user = state.users.find((item) => item.name.toLowerCase().includes(query) || item.code.toLowerCase().includes(query));
   renderHomeResult(user);
 });
 
